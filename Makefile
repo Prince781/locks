@@ -5,5 +5,7 @@ bakery-test: bakery-test.c locks/bakery.h
 
 lamport-test: lamport-test.c locks/lamport.h
 
+spinlock-test: spinlock-test.c locks/spin.h
+
 clean:
-	$(RM) bakery-test lamport-test
+	$(RM) bakery-test lamport-test spinlock-test
