@@ -5,7 +5,6 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <getopt.h>
-#include <time.h>
 #include <stdbool.h>
 #include <locks/bakery.h>
 
@@ -29,19 +28,16 @@ static void *thread_start(void *arg) {
             bakery_lock(&lock, threadnum);
     }
 
-    sleepamt.tv_sec = 0;
-    sleepamt.tv_nsec = threadnum * 10000000;
-    printf("thread %d: I acquired it! I will release it in %f seconds...\n", 
-            threadnum, 1e-9f * (float) sleepamt.tv_nsec);
+    printf("thread %d: I acquired it!\n", threadnum);
     printf("\tthread %d: these numbers should be in order and contiguous:\n", threadnum);
     for (unsigned i=1; i<=10; ++i)
         printf("\tthread %d: %d\n", threadnum, i);
-    // nanosleep(&sleepamt, NULL);
 
     current = threadnum;
+    sleepamt.tv_sec = 0;
+    sleepamt.tv_nsec = 1000;
     for (int i=0; i<10000; ++i) {
         assert(current == threadnum);
-        sleepamt.tv_nsec = 1000;
         nanosleep(&sleepamt, NULL);
         current = threadnum;
     }
