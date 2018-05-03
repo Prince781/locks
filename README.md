@@ -11,3 +11,5 @@ File | Description
 `locks/spin.h` | [test-and-test-and-set lock](http://delivery.acm.org/10.1145/810000/808203/p340-rudolph.pdf?ip=128.151.150.2&id=808203&acc=ACTIVE%20SERVICE&key=7777116298C9657D%2EDC6AD36C640314EC%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1522504209_8b4ece9e8a9e71aa1ae8df4980ea6f9f)
 `locks/ticket.h` | Ticket lock
 `locks/mcs.h` | Mellor-Crummey and Scott lock
+
+Only tested on x86-64.
